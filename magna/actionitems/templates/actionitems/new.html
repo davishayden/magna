@@ -1,0 +1,11 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css">
+</head>
+{% block content %}
+    <h1>New Issue</h1>
+    <form method="POST" class="issue-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Add New Issue</button>
+    </form>
+{% endblock %}

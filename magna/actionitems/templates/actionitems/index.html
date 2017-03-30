@@ -1,0 +1,28 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css">
+</head>
+<div class="content">
+<h1>Current Lines</h1>
+    <a class="button is-outlined" href="{% url 'actionitem:search' %}">Search</a>
+
+    {% if line_list %}
+    <div class="tile is-ancestor">
+        {% for line in line_list %}
+        {%if forloop.counter0|divisibleby:3 %}
+            </div>
+            <div class="tile is-ancestor">
+        {%endif%}
+          <div class="tile is is-vertical is-parent is-4 ">
+              <div class="title is-child box ">
+                  <a href="{% url 'actionitem:detail' line.id %}">{{ line.name }}</a>
+              </div>
+          </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p>No line are available.</p>
+    {% endif %}
+    </div>
+
+

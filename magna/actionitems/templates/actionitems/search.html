@@ -1,0 +1,52 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css">
+</head>
+
+<div class="content">
+<h1>Action Items / Open Issues</h1>
+  <a class="button is-outlined" href="{% url 'actionitem:index' %}">Back to All Lines</a>
+{% block content %}
+    <form method="POST" class="search-form">{% csrf_token %}
+        {{ form.team }}
+        <button type="submit" class="button is-outlined">Search</button>
+    </form>
+{% endblock %}
+  <table class="table">
+  <thead>
+    <tr>
+        <th><abbr title="Line">Line</abbr></th>
+      <th><abbr title="Item">Item</abbr></th>
+      <th><abbr title="Status">Status</abbr></th>
+      <th><abbr title="Scrap %">Scrap %</abbr></th>
+      <th><abbr title="Open Date">Open Date</abbr></th>
+      <th><abbr title="Problem">Problem</abbr></th>
+      <th><abbr title="Root Cause">Root Cause</abbr></th>
+      <th><abbr title="Team">Team</abbr></th>
+      <th><abbr title="Target Date">Target Date</abbr></th>
+      <th><abbr title="Close Date">Close Date</abbr></th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for item in item_list %}
+
+    <tr>
+        <th>{{item.lineid }}</th>
+      <th>{{item.item }}</th>
+      <td>{{ item.status }}
+      </td>
+      <td>{{ item.scrap }}</td>
+      <td>{{ item.openDate }}</td>
+      <td>{{ item.problem }}</td>
+      <td>{{ item.rootCause }}</td>
+      <td>{{ item.team }}</td>
+      <td>{{ item.targetDate }}</td>
+      <td>{{ item.closeDate }}</td>
+    </tr>
+        {% endfor %}
+  <tfoot>
+
+</tfoot>
+    </tbody>
+    </table>
+    </div>
